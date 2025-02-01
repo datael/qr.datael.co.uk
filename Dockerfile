@@ -11,4 +11,6 @@ COPY ./index.html .
 
 EXPOSE 8080
 
-CMD ["trunk", "serve", "--open"]
+RUN trunk build --release
+
+CMD ["trunk", "serve", "--release", "--open"]
