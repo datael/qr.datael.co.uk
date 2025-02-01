@@ -4,8 +4,8 @@ use leptos::prelude::*;
 use leptos::*;
 
 #[component]
-pub fn QRCode(#[prop(into)] url: Signal<String>) -> impl IntoView {
-    let code = qrcode::QrCode::new(url.get().as_bytes()).expect("Should not fail..?");
+pub fn QRCode(url: String) -> impl IntoView {
+    let code = qrcode::QrCode::new(url.as_bytes()).expect("Should not fail..?");
 
     let rendered_image = code.render::<Luma<u8>>().build();
 
@@ -19,7 +19,7 @@ pub fn QRCode(#[prop(into)] url: Signal<String>) -> impl IntoView {
     view! {
         <img
             src={format!("data:image/png;base64, {}", image_byte_buffer.into_base64_string()) }
-            alt={format!("{} as QR Code", url.get())}
+            alt={format!("{} as QR Code", url)}
         />
     }
 }

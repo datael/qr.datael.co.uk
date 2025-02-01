@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-leptos = { version = "0.7.5", features = ["csr"] }
+leptos = { version = "0.7.5", features = ["csr", "nightly"] }
 console_error_panic_hook = "0.1.7"
 qrcode = "0.14"
 image = "0.25.5"

@@ -7,9 +7,8 @@ fn App() -> impl IntoView {
     let (url, set_url) = signal("https://qr.datael.co.uk/".to_string());
 
     let qr = move || {
-        let url_string = url.read().clone();
         view! {
-            <components::qr_code::QRCode url=url_string />
+            <components::qr_code::QRCode url=url() />
         }
     };
 
@@ -22,7 +21,7 @@ fn App() -> impl IntoView {
                 placeholder="URL to encode"
                 prop:value=url
                 on:input:target=move |ev| {
-                    set_url.set(ev.target().value());
+                    set_url(ev.target().value());
                 }
             />
             </label>
